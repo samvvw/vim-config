@@ -1,6 +1,6 @@
 
 
-##Myfirst Vim Setup
+##Myfirst Vim Setup##
 
 
 * Vim-airline requires powerline fonts to be installed and selectec as terminal defaul font (any that has powerline in it)
