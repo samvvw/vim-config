@@ -1,3 +1,4 @@
+syntax enable
 set relativenumber
 set nu
 set noerrorbells
@@ -6,6 +7,14 @@ set shiftwidth=4
 " set nowrap
 set scrolloff=8
 
+set wildmenu
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
+set confirm
+set hidden
+set history=1000
+set spell
 
 call plug#begin('~/.vim/plugged')
 
