@@ -15,6 +15,7 @@ set confirm
 set hidden
 set history=1000
 set spell
+set nocompatible
 
 call plug#begin('~/.vim/plugged')
 
@@ -55,13 +56,14 @@ Plug 'nvim-telescope/telescope.nvim'
 
 " Theme
 Plug 'morhetz/gruvbox'
-" If you are using Vim Plug
-" Using Vim-Plug
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
+
 
 
 " Status bar
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 
 " CSS Colors
 Plug 'ap/vim-css-color'
@@ -72,8 +74,10 @@ call plug#end()
 " Coc settings
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-emmet', 'coc-eslint']
 
-colorscheme gruvbox
-let g:gruvbox_contrast_dark=1
+let g:onedark_termcolors=256
+
+colorscheme onedark
+" let g:gruvbox_contrast_dark=1
 set bg=dark
 highlight Normal guibg=none
 
