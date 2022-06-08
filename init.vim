@@ -1,10 +1,8 @@
-syntax enable
 set relativenumber
 set nu
 set noerrorbells
 set tabstop=4 softtabstop=4
 set shiftwidth=4
-" set nowrap
 set scrolloff=8
 set mouse=a
 set wildmenu
@@ -17,7 +15,7 @@ set history=1000
 set spell
 set nocompatible
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/plugged/')
 
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -105,7 +103,19 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 inoremap jj <ESC>
 
-" Telescope remaps
+" Copy to clipboard
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+yg_
+nnoremap <leader>y "+y
+nnoremap <leader>yy "+yy
+
+" Paste from clipboard
+" nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+"Telescope remaps
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 nnoremap <leader>ff <cmd>Telescope find_files<CR>
 nnoremap <leader>fg <cmd>Telescope live_grep<CR>
