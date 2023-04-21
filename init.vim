@@ -20,11 +20,6 @@ call plug#begin('~/.vim/plugged/')
 " COC
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Prettier
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'npm install',
-"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-"
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Git
 Plug 'tpope/vim-fugitive'
@@ -61,7 +56,6 @@ Plug 'sheerun/vim-polyglot'
 
 " Status bar
 Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 
 " CSS Colors
 Plug 'ap/vim-css-color'
@@ -75,7 +69,7 @@ let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-css',
 let g:onedark_termcolors=256
 
 colorscheme onedark
-" let g:gruvbox_contrast_dark=1
+" let g:gruvbox_contrast_dark=7
 set bg=dark
 highlight Normal guibg=none
 
@@ -139,7 +133,7 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Use K to show documentation in preview window.
+" Use K to show documentation in window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -153,7 +147,6 @@ function! s:show_documentation()
 endfunction
 
 " Coc remaps end
-
 fun! TrimWhitespace()
 	let l:save = winsaveview()
 	keeppatterns %s/\s\+$//e
@@ -164,16 +157,4 @@ augroup SAM_CONF
 	autocmd!
 	autocmd BufWritePre * :call TrimWhitespace()
 augroup END
-
-
-
-
-
-
-
-
-
-
-
-
 
