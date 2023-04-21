@@ -20,11 +20,6 @@ call plug#begin('~/.vim/plugged/')
 " COC
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Prettier
-" Plug 'prettier/vim-prettier', {
-"   \ 'do': 'npm install',
-"   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
-"
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 " Git
 Plug 'tpope/vim-fugitive'
@@ -197,7 +192,6 @@ nnoremap <leader>== :UndotreeToggle<CR>
 " endfunction
 
 " Coc remaps end
-
 fun! TrimWhitespace()
 	let l:save = winsaveview()
 	keeppatterns %s/\s\+$//e
