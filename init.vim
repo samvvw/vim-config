@@ -17,10 +17,8 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged/')
 
-" COC
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -29,19 +27,18 @@ Plug 'mbbill/undotree'
 
 " Emmet
 Plug 'mattn/emmet-vim'
-" Plug 'github/copilot.vim'
 
+" Live server for nvim
 Plug 'turbio/bracey.vim'
+
 " syntax
 Plug 'scrooloose/syntastic'
 Plug 'mxw/vim-jsx'
 Plug 'leafgarland/typescript-vim'
 Plug 'rust-lang/rust.vim'
+
 "" indent lines
 Plug 'yggdroot/indentline'
-
-"NerdTree
-" Plug 'preservim/nerdtree'
 
 " Surround quotes, parenthesis and tags
 Plug 'tpope/vim-surround'
@@ -56,8 +53,6 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
-
-
 
 " Status bar
 Plug 'vim-airline/vim-airline'
@@ -77,16 +72,10 @@ Plug 'hrsh7th/cmp-nvim-lsp' " Required
 Plug 'L3MON4D3/LuaSnip'     " Required
 
 Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v2.x'}
-
-
 call plug#end()
-
-" Coc settings
-" let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-css', 'coc-html', 'coc-emmet', 'coc-eslint', 'coc-solargraph', 'coc-elixir', 'coc-go', 'coc-rust-analyzer', 'coc-python', 'coc-jedi']
 
 colorscheme onedark
 let g:onedark_termcolors=256
-
 let g:gruvbox_contrast_dark=1
 set bg=dark
 highlight Normal guibg=none
@@ -104,14 +93,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-
 let g:indentLine_setColors = 0
-
 
 let mapleader = ' '
 
 " nvim-tree config
-" let g:netrw_liststyle = 3
 let g:netrw_altv = 2
 let g:netrw_winsize = 80
 
@@ -133,7 +119,6 @@ nnoremap <C-u> <C-u>zz
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-" nnoremap <leader>nt :NERDTree<CR>
 nnoremap <leader>nt :Ex<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :Ex<CR>
@@ -142,11 +127,9 @@ inoremap jj <ESC>
 " Copy to clipboard
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+yg_
-nnoremap <leader>y "+y
 nnoremap <leader>yy "+yy
 
 " Paste from clipboard
-" nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
@@ -160,38 +143,6 @@ nnoremap <leader>fb <cmd>Telescope buffers<CR>
 " Undotree remaps
 nnoremap <leader>== :UndotreeToggle<CR>
 
-" Coc remaps
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-"
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" if has('nvim')
-"   inoremap <silent><expr> <c-space> coc#refresh()
-" else
-"   inoremap <silent><expr> <c-@> coc#refresh()
-" endif
-
-" Use K to show documentation in preview window.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-"
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   elseif (coc#rpc#ready())
-"     call CocActionAsync('doHover')
-"   else
-"     execute '!' . &keywordprg . " " . expand('<cword>')
-"   endif
-" endfunction
-
-" Coc remaps end
 fun! TrimWhitespace()
 	let l:save = winsaveview()
 	keeppatterns %s/\s\+$//e
@@ -203,17 +154,13 @@ augroup SAM_CONF
 	autocmd BufWritePre * :call TrimWhitespace()
 augroup END
 
-
 " LSP SETTINGS LUA
 "
 lua <<EOF
-local lsp = require('lsp-zero').preset({})
-
-lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
-end)
+local lsp = require('lsp-zero').preset("recommended")
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+lsp.setup()
 
 vim.o.updatetime = 250
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
@@ -227,7 +174,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	}
 )
 
-local  signs = { Error = "☢ ", Warn = "⚠ ", Hint = "H", Info = "I" }
+local  signs = { Error = "🚨", Warn = "🚧", Hint = "💡", Info = "📚" }
 
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
@@ -274,5 +221,11 @@ autocmd("BufWinEnter", {
     end,
 })
 
-lsp.setup()
+-- Undotree config
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+-- Undotree config end
+
 EOF
