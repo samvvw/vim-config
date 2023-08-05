@@ -1,23 +1,36 @@
 print("lsp config loaded...")
-local lsp = require('lsp-zero').preset("recommended")
-lsp.configure('lua-language-server', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
+
+local lsp = require('lsp-zero').preset({
+  float_border = 'rounded',
+  call_servers = 'local',
+  configure_diagnostics = true,
+  setup_servers_on_start = true,
+  set_lsp_keymaps = {
+    preserve_mappings = false,
+    omit = {},
+  },
+  manage_nvim_cmp = {
+    set_sources = 'recommended',
+    set_basic_mappings = true,
+    set_extra_mappings = false,
+    use_luasnip = true,
+    set_format = true,
+    documentation_window = true,
+  },
 })
 
 lsp.on_attach(function(client, bufnr)
   lsp.default_keymaps({buffer = bufnr})
 end)
 
--- Fix Undefined global 'vim'
+require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
--- (Optional) Configure lua language server for neovim
-
+lsp.set_sign_icons({
+    error = '⛔',
+    warn = '⚠️',
+    hint = '💡',
+    info = 'ℹ️'
+  })
 
 -- Diagnostics settings
 vim.o.updatetime = 250
@@ -34,7 +47,6 @@ vim.lsp.diagnostic.on_publish_diagnostics, {
 )
 -- Diagnostics settings
 
-
 vim.diagnostic.config({
 virtual_text = {
 		prefix = "🔔"
@@ -47,9 +59,9 @@ virtual_text = {
 
 lsp.setup()
 
-local signs = { Error = "⛔", Warn = "⚠️", Hint = "💡", Info = "ℹ️ " }
-
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
+-- local signs = { Error = "⛔", Warn = "⚠️", Hint = "💡", Info = "ℹ️ " }
+-- 
+-- for type, icon in pairs(signs) do
+-- 	local hl = "DiagnosticSign" .. type
+-- 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+-- end

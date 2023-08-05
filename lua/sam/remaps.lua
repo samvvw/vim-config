@@ -4,7 +4,6 @@ vim.g.mapleader = ' '
 vim.keymap.set('n', '<leader><TAB>', ':bn<CR>')
 vim.keymap.set('n', '<leader><s-TAB>', ':bp<CR>')
 
-
 -- save and exit buffers
 vim.keymap.set('n', '<leader>nt', ':Ex<CR>')
 vim.keymap.set('n', '<leader>w', ':w<CR>')
@@ -36,8 +35,7 @@ vim.keymap.set('n', '<leader>yy', '"+yy')
 
 -- paste from clipboard
 vim.keymap.set('v', '<leader>P', '"+P')
-vim.keymap.set('n', '<leader>p', '"+p')
-vim.keymap.set('n', '<leader>p', '"+P')
+vim.keymap.set('n', '<leader>P', '"+p')
 
 -- telescope remaps
 local builtin = require('telescope.builtin')
@@ -53,4 +51,3 @@ vim.keymap.set('n', '<leader>gs', ':Git<CR>')
 
 -- Undo tree remaps
 vim.keymap.set('n', '<leader>==', ':UndotreeToggle<CR>')
-
