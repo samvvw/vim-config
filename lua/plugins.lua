@@ -2,7 +2,7 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
---	use { 'prettier/vim-prettier', run = 'npm install' }
+	use { 'prettier/vim-prettier', run = 'npm install' }
 	-- Git
 	use 'tpope/vim-fugitive'
 	use 'airblade/vim-gitgutter'
