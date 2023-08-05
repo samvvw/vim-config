@@ -1,0 +1,17 @@
+-- vim.opt.guicursor = ""
+vim.opt.nu = true
+vim.noerrorbells = true
+vim.opt.tabstop=4
+vim.opt.softtabstop=4
+vim.opt.shiftwidth=4
+vim.opt.scrolloff=8
+vim.opt.mouse = "a"
+vim.opt.wildmenu = true
+-- vim.opt.foldmethod = indent
+-- vim.opt.foldnestmax=3
+-- vim.opt.nofoldenable = true
+vim.opt.confirm = true
+vim.opt.hidden = true
+vim.opt.history=1000
+vim.opt.spell = true
+vim.compatible = false
