@@ -8,6 +8,7 @@ vim.keymap.set('n', '<leader><s-TAB>', ':bp<CR>')
 vim.keymap.set('n', '<leader>nt', ':Ex<CR>')
 vim.keymap.set('n', '<leader>w', ':w<CR>')
 vim.keymap.set('n', '<leader>q', ':Ex<CR>')
+vim.keymap.set('n', '<leader>Q', ':bd<CR>')
 
 -- Escape insert mode
 vim.keymap.set('i', 'jj', '<ESC>')

@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
 
 	-- Theme
 	use 'morhetz/gruvbox'
-	use 'joshdick/onedark.vim'
+	use 'navarasu/onedark.nvim'
 	use 'sheerun/vim-polyglot'
 
 
