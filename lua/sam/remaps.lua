@@ -53,3 +53,7 @@ vim.keymap.set('n', '<leader>gs', ':Git<CR>')
 -- Undo tree remaps
 vim.keymap.set('n', '<leader>==', ':UndotreeToggle<CR>')
 vim.keymap.set('n', '<leader>p', ':Prettier<CR>')
+
+-- Window management
+vim.keymap.set('n', '<leader>vs', ':vsplit<CR>')
+vim.keymap.set('n', '<leader>vh', ':split<CR>')
