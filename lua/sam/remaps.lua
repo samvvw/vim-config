@@ -57,3 +57,32 @@ vim.keymap.set('n', '<leader>p', ':Prettier<CR>')
 -- Window management
 vim.keymap.set('n', '<leader>vs', ':vsplit<CR>')
 vim.keymap.set('n', '<leader>vh', ':split<CR>')
+
+-- Continue
+vim.keymap.set('n', '<leader>dr', '<Plug>VimspectorContinue')
+-- Stop
+vim.keymap.set('n', '<leader>ds', '<Plug>VimspectorStop')
+-- Restart
+vim.keymap.set('n', '<leader>dq', '<Plug>VimspectorRestart')
+-- Run to cursor
+vim.keymap.set('n', '<leader>dc', '<Plug>VimspectorRunToCursor')
+-- Step over
+vim.keymap.set('n', '<leader>SO', '<Plug>VimspectorStepOver')
+-- Step into
+vim.keymap.set('n', '<leader>SI', '<Plug>VimspectorStepInto')
+-- Step out
+vim.keymap.set('n', '<leader>SQ', '<Plug>VimspectorStepOut')
+
+
+-- Toggle Breakpoint
+vim.keymap.set('n', '<leader>do', '<Plug>VimspectorToggleBreakpoint')
+-- Toggle Conditional Breakpoint
+vim.keymap.set('n', '<leader>dO', '<Plug>VimspectorToggleConditionalBreakpoint')
+-- Toggle Functional Breakpoint
+vim.keymap.set('n', '<leader>dF', '<Plug>VimspectorToggleFunctionalBreakpoint')
+
+-- Debug inspect
+vim.keymap.set('n', '<leader>dp', '<Plug>VimspectorBalloonEval')
+vim.keymap.set('x', '<leader>dp', '<Plug>VimspectorBalloonEval')
+
+
