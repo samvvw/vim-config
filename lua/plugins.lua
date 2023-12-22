@@ -46,6 +46,10 @@ return require('packer').startup(function(use)
 	-- CSS Colors
 	use 'ap/vim-css-color'
 
+	-- Copilot
+	
+	use 'github/copilot.vim'
+
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
