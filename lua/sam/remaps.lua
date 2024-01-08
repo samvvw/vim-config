@@ -1,6 +1,5 @@
 vim.g.mapleader = ' '
 
-
 -- switch tabs
 vim.keymap.set('n', '<leader><TAB>', ':bn<CR>')
 vim.keymap.set('n', '<leader><s-TAB>', ':bp<CR>')
@@ -86,7 +85,4 @@ vim.keymap.set('n', '<leader>dF', '<Plug>VimspectorToggleFunctionalBreakpoint')
 vim.keymap.set('n', '<leader>dp', '<Plug>VimspectorBalloonEval')
 vim.keymap.set('x', '<leader>dp', '<Plug>VimspectorBalloonEval')
 
--- Copilot
-vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("<CR>")', { expr = true, silent = true })
-vim.g['copilot_no_tab_map'] = true
 
