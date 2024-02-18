@@ -15,3 +15,6 @@ vim.opt.hidden = true
 vim.opt.history=1000
 vim.opt.spell = true
 vim.compatible = false
+vim.g.netrw_preview = 1
+vim.g.netrw_altv = 2
+vim.g.netrw_winsize = 50

@@ -2,7 +2,10 @@ require('telescope').setup {
   defaults = {
     file_ignore_patterns = {
       "node_modules",
-      "vendor"
+      "vendor",
+      "deps",
+      "_build",
+      ".elixir_ls"
     }
   }
 }

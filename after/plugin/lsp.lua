@@ -1,5 +1,4 @@
 local lsp = require('lsp-zero').preset({
-  float_border = 'rounded',
   call_servers = 'local',
   configure_diagnostics = true,
   setup_servers_on_start = true,
@@ -35,19 +34,19 @@ vim.o.updatetime = 250
 
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-vim.lsp.diagnostic.on_publish_diagnostics, {
-		underline = true,
-		update_in_insert = false,
-		virtual_text = { spacing = 4, prefix = "🚧" },
-		severity_sort = true,
-	}
-)
+-- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+-- vim.lsp.diagnostic.on_publish_diagnostics, {
+-- 		underline = true,
+-- 		update_in_insert = false,
+-- 		virtual_text = { spacing = 4, prefix = "🚧" },
+-- 		severity_sort = true,
+-- 	}
+-- )
 -- Diagnostics settings
 
 vim.diagnostic.config({
 virtual_text = {
-		prefix = "🔔"
+		prefix = "🚧"
 	},
 	update_in_insert = true,
 	float = {
