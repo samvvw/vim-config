@@ -10,6 +10,7 @@ vim.keymap.set('n', '<leader>nt', ':Ex<CR>')
 vim.keymap.set('n', '<leader>w', ':w<CR>')
 vim.keymap.set('n', '<leader>q', ':Ex<CR>')
 vim.keymap.set('n', '<leader>Q', ':bd<CR>')
+vim.keymap.set('n', '<leader>W', ':%bd|e#<CR>')
 
 -- Escape insert mode
 vim.keymap.set('i', 'jj', '<ESC>')
@@ -23,7 +24,9 @@ vim.keymap.set('n', 'J', 'mzJ`z')
 
 -- keep cursor in the middle of the screen when moving through search results
 vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', '*', '*zzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '#', '#zzzv')
 
 -- keep cursor in the middle of the screen when scrolling
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
@@ -45,7 +48,8 @@ vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<CR>')
-vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>')
+-- vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>')
+vim.keymap.set('n', '<leader>fg', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>')
 
 -- Git fugitive
@@ -89,4 +93,3 @@ vim.keymap.set('x', '<leader>dp', '<Plug>VimspectorBalloonEval')
 -- Copilot
 vim.api.nvim_set_keymap('i', '<C-J>', 'copilot#Accept("<CR>")', { expr = true, silent = true })
 vim.g['copilot_no_tab_map'] = true
-
