@@ -54,7 +54,6 @@ return require('packer').startup(function(use)
 	use 'ap/vim-css-color'
 
 	-- Copilot
-
 	use 'github/copilot.vim'
 
 	use {
