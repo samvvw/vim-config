@@ -5,7 +5,8 @@ require('telescope').setup {
       "vendor",
       "deps",
       "_build",
-      ".elixir_ls"
+      ".elixir_ls",
+      ".git"
     }
   }
 }
