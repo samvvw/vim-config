@@ -27,8 +27,15 @@ return require('packer').startup(function(use)
 	-- Telescope fuzzy finder
 	use 'nvim-lua/popup.nvim'
 	use 'nvim-lua/plenary.nvim'
-	use 'nvim-telescope/telescope.nvim'
-
+	use {
+		"nvim-telescope/telescope.nvim",
+		requires = {
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
+		},
+		config = function()
+			require("telescope").load_extension("live_grep_args")
+		end
+	}
 	-- Theme
 	use 'morhetz/gruvbox'
 	use 'navarasu/onedark.nvim'
@@ -47,7 +54,6 @@ return require('packer').startup(function(use)
 	use 'ap/vim-css-color'
 
 	-- Copilot
-	
 	use 'github/copilot.vim'
 
 	use {
