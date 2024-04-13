@@ -3,6 +3,9 @@ require('telescope').setup {
     file_ignore_patterns = {
       "node_modules",
       "vendor",
+      "deps",
+      "_build",
+      ".elixir_ls",
       ".git"
     }
   }
