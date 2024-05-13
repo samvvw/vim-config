@@ -40,6 +40,9 @@ return require('packer').startup(function(use)
 	-- Theme
 	use 'morhetz/gruvbox'
 	use 'navarasu/onedark.nvim'
+	use 'rose-pine/neovim'
+	use 'folke/tokyonight.nvim'
+
 	use 'sheerun/vim-polyglot'
 
 
@@ -79,4 +82,11 @@ return require('packer').startup(function(use)
 			{ 'rafamadriz/friendly-snippets' },
 		}
 	}
+
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = function()
+			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+			ts_update()
+		end, }
 end)

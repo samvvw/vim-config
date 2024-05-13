@@ -1,4 +1,4 @@
-local lsp = require('lsp-zero').preset({
+local lsp_zero = require('lsp-zero').preset({
   call_servers = 'local',
   configure_diagnostics = true,
   setup_servers_on_start = true,
@@ -16,18 +16,18 @@ local lsp = require('lsp-zero').preset({
   },
 })
 
-lsp.on_attach(function(_, bufnr)
-  lsp.default_keymaps({buffer = bufnr})
+lsp_zero.on_attach(function(_, bufnr)
+  lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
 
-lsp.set_sign_icons({
-    error = '⛔',
-    warn = '⚠️',
-    hint = '💡',
-    info = 'ℹ️'
-  })
+lsp_zero.set_sign_icons({
+  error = '⛔',
+  warn = '⚠️',
+  hint = '💡',
+  info = 'ℹ️'
+})
 
 -- Diagnostics settings
 vim.o.updatetime = 250
@@ -35,13 +35,13 @@ vim.o.updatetime = 250
 vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 vim.diagnostic.config({
-virtual_text = {
-		prefix = "🚧"
-	},
-	update_in_insert = true,
-	float = {
-		source = "always",
-	},
+  virtual_text = {
+    prefix = "🚧"
+  },
+  update_in_insert = true,
+  float = {
+    source = "always",
+  },
 })
 
-lsp.setup()
+lsp_zero.setup()
