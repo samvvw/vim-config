@@ -6,6 +6,7 @@ return require('packer').startup(function(use)
 	-- Git
 	use 'tpope/vim-fugitive'
 	use 'airblade/vim-gitgutter'
+	use 'f-person/git-blame.nvim'
 
 	-- Emmet
 	-- Plug 'mattn/emmet-vim'
