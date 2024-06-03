@@ -61,7 +61,7 @@ vim.keymap.set('n', '<leader>p', ':Prettier<CR>')
 
 -- Window management
 vim.keymap.set('n', '<leader>vs', ':vsplit<CR>')
-vim.keymap.set('n', '<leader>vh', ':split<CR>')
+vim.keymap.set('n', '<leader>hs', ':split<CR>')
 
 -- Continue
 vim.keymap.set('n', '<leader>dr', '<Plug>VimspectorContinue')
@@ -98,3 +98,8 @@ vim.g['copilot_no_tab_map'] = true
 vim.keymap.set('n', '<leader><leader>r', ':lua SourceConfig()<CR>')
 
 vim.keymap.set('n', '<leader><leader>cs',':lua ChangeTheme()<CR>')
+
+-- Terminal mode
+vim.keymap.set('t', '<C-w>n', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<leader>vt', ':vsplit <CR>:term <CR>', { desc = 'Enter verital terminal mode' })
+vim.keymap.set('n', '<leader>ht', ':split <CR>:term <CR>', { desc = 'Enter horizontal terminal mode' })

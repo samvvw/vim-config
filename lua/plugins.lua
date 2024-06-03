@@ -54,6 +54,9 @@ return require('packer').startup(function(use)
 	use 'vim-airline/vim-airline'
 	use 'vim-airline/vim-airline-themes'
 
+	-- Icons
+	use  'nvim-tree/nvim-web-devicons'
+
 	-- CSS Colors
 	use 'ap/vim-css-color'
 
