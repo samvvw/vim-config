@@ -51,6 +51,17 @@ vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files hidden=true<CR>')
 -- vim.keymap.set('n', '<leader>fg', '<cmd>Telescope live_grep<CR>')
 vim.keymap.set('n', '<leader>fg', ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>')
+vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
+vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader><leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>s/', function()
+	builtin.live_grep {
+		grep_open_files = true,
+		prompt_title = 'Live Grep in Open Files',
+	}
+end, { desc = '[S]earch [/] in Open Files' })
 
 -- Git fugitive
 vim.keymap.set('n', '<leader>gs', ':Git<CR>')
@@ -97,7 +108,7 @@ vim.g['copilot_no_tab_map'] = true
 
 vim.keymap.set('n', '<leader><leader>r', ':lua SourceConfig()<CR>')
 
-vim.keymap.set('n', '<leader><leader>cs',':lua ChangeTheme()<CR>')
+vim.keymap.set('n', '<leader><leader>cs', ':lua ChangeTheme()<CR>')
 
 -- Terminal mode
 vim.keymap.set('t', '<C-w>n', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
