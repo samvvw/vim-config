@@ -32,7 +32,7 @@ lsp_zero.set_sign_icons({
 -- Diagnostics settings
 vim.o.updatetime = 250
 
-vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, max_width = 80, max_height = 10, offset_x = 5, offset_y = 2})]]
 
 vim.diagnostic.config({
   virtual_text = {
