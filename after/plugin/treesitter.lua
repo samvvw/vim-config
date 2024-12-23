@@ -1,3 +1,4 @@
+
 function SetTreesitter()
   require("nvim-treesitter.configs").setup({
     -- A list of parser names, or "all"
@@ -24,6 +25,15 @@ function SetTreesitter()
       -- Instead of true it can also be a list of languages
       additional_vim_regex_highlighting = { "markdown" },
     },
+  })
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "javascript", "lua", "python", "typescriptreact", "typescript", "ruby" }, -- Add filetypes as needed
+    callback = function()
+      vim.wo.foldmethod = 'expr'
+      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+      vim.wo.foldlevel = 99
+    end,
   })
 
   -- local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
