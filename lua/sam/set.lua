@@ -7,6 +7,7 @@ vim.opt.shiftwidth=4
 vim.opt.scrolloff=8
 vim.opt.mouse = "a"
 vim.opt.wildmenu = true
+vim.opt.history = 10000
 -- vim.opt.foldmethod = indent
 -- vim.opt.foldnestmax=3
 -- vim.opt.nofoldenable = true

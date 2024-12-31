@@ -27,14 +27,34 @@ function SetTreesitter()
     },
   })
 
-  vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "javascript", "lua", "python", "typescriptreact", "typescript", "ruby" }, -- Add filetypes as needed
+local option = vim.opt
+vim.api.nvim_create_autocmd("BufReadPost", {
     callback = function()
-      vim.wo.foldmethod = 'expr'
-      vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.wo.foldlevel = 99
+        vim.defer_fn(function()
+      print("Setting foldmethod to expr")
+            option.foldmethod = "expr"
+            option.foldexpr = "nvim_treesitter#foldexpr()"
+--            option.foldcolumn = "1"
+            -- opt.foldtext = ""
+
+ --           option.foldnestmax = 3
+            option.foldlevel = 99
+  --          option.foldlevelstart = 99
+        end, 100)
     end,
-  })
+})
+
+ --  vim.api.nvim_create_autocmd("FileType", {
+ --    pattern = { "javascript", "python", "typescript", "ruby" }, -- Add filetypes as needed
+ --    callback = function()
+ --        vim.defer_fn(function()
+ --      print("Setting foldmethod to expr")
+ --      vim.opt.foldmethod = 'expr'
+ --     vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+ --      vim.opt.foldlevel = 99
+ --        end, 100)
+ --    end,
+ --  })
   -- local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
   -- treesitter_parser_config.templ = {
   --   install_info = {
