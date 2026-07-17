@@ -77,26 +77,12 @@ vim.keymap.set("n", "<leader>gs", ":Git<CR>")
 -- Undotree
 vim.keymap.set("n", "<leader>==", ":UndotreeToggle<CR>")
 
--- Prettier
-vim.keymap.set("n", "<leader>p", ":Prettier<CR>")
-
 -- Window management
 vim.keymap.set("n", "<leader>vs", ":vsplit<CR>")
 vim.keymap.set("n", "<leader>hs", ":split<CR>")
 
--- Debugging (vimspector)
-vim.keymap.set("n", "<leader>dr", "<Plug>VimspectorContinue")
-vim.keymap.set("n", "<leader>ds", "<Plug>VimspectorStop")
-vim.keymap.set("n", "<leader>dq", "<Plug>VimspectorRestart")
-vim.keymap.set("n", "<leader>dc", "<Plug>VimspectorRunToCursor")
-vim.keymap.set("n", "<leader>SO", "<Plug>VimspectorStepOver")
-vim.keymap.set("n", "<leader>SI", "<Plug>VimspectorStepInto")
-vim.keymap.set("n", "<leader>SQ", "<Plug>VimspectorStepOut")
-vim.keymap.set("n", "<leader>do", "<Plug>VimspectorToggleBreakpoint")
-vim.keymap.set("n", "<leader>dO", "<Plug>VimspectorToggleConditionalBreakpoint")
-vim.keymap.set("n", "<leader>dF", "<Plug>VimspectorToggleFunctionalBreakpoint")
-vim.keymap.set("n", "<leader>dp", "<Plug>VimspectorBalloonEval")
-vim.keymap.set("x", "<leader>dp", "<Plug>VimspectorBalloonEval")
+-- Formatting (<leader>p) and debugging (<leader>d*, <leader>S*) keymaps live in
+-- their plugin specs: lua/plugins/editor.lua (conform) and lua/plugins/debug.lua (dap).
 
 -- Toggle colorscheme light/dark
 vim.keymap.set("n", "<leader><leader>cs", function()
