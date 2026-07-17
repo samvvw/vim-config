@@ -24,13 +24,22 @@ return {
     end,
   },
 
-  -- Status / tab line
+  -- Status line + buffer tabline
   {
-    "vim-airline/vim-airline",
-    dependencies = { "vim-airline/vim-airline-themes" },
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      vim.g["airline#extensions#tabline#enabled"] = 1
-      vim.g.airline_powerline_fonts = 1
+      require("lualine").setup({
+        options = {
+          theme = "auto", -- follows the active colorscheme (rose-pine)
+          globalstatus = true,
+        },
+        tabline = {
+          lualine_a = { "buffers" },
+          lualine_z = { "tabs" },
+        },
+      })
     end,
   },
 }

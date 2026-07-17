@@ -1,7 +1,13 @@
 local opt = vim.opt
 
 opt.number = true
+opt.relativenumber = true
+opt.signcolumn = "yes"
 opt.errorbells = false
+
+-- Search
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Indentation
 opt.tabstop = 4
