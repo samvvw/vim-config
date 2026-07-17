@@ -41,35 +41,45 @@ vim.keymap.set("v", "<leader>P", '"+P')
 vim.keymap.set("n", "<leader>P", '"+p')
 
 -- Telescope (lazily require so it only loads on first use)
-vim.keymap.set("n", "<leader>ps", function()
-  require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") })
-end)
+vim.keymap.set(
+  "n",
+  "<leader>ps",
+  function() require("telescope.builtin").grep_string({ search = vim.fn.input("Grep > ") }) end
+)
 vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>")
-vim.keymap.set("n", "<leader>fg", function()
-  require("telescope").extensions.live_grep_args.live_grep_args()
-end)
+vim.keymap.set("n", "<leader>fg", function() require("telescope").extensions.live_grep_args.live_grep_args() end)
 vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>")
-vim.keymap.set("n", "<leader>sh", function()
-  require("telescope.builtin").help_tags()
-end, { desc = "[S]earch [H]elp" })
-vim.keymap.set("n", "<leader>sk", function()
-  require("telescope.builtin").keymaps()
-end, { desc = "[S]earch [K]eymaps" })
-vim.keymap.set("n", "<leader>sd", function()
-  require("telescope.builtin").diagnostics()
-end, { desc = "[S]earch [D]iagnostics" })
-vim.keymap.set("n", "<leader>sr", function()
-  require("telescope.builtin").resume()
-end, { desc = "[S]earch [R]esume" })
-vim.keymap.set("n", "<leader><leader><leader>", function()
-  require("telescope.builtin").buffers()
-end, { desc = "[ ] Find existing buffers" })
-vim.keymap.set("n", "<leader>s/", function()
-  require("telescope.builtin").live_grep({
-    grep_open_files = true,
-    prompt_title = "Live Grep in Open Files",
-  })
-end, { desc = "[S]earch [/] in Open Files" })
+vim.keymap.set("n", "<leader>sh", function() require("telescope.builtin").help_tags() end, { desc = "[S]earch [H]elp" })
+vim.keymap.set(
+  "n",
+  "<leader>sk",
+  function() require("telescope.builtin").keymaps() end,
+  { desc = "[S]earch [K]eymaps" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>sd",
+  function() require("telescope.builtin").diagnostics() end,
+  { desc = "[S]earch [D]iagnostics" }
+)
+vim.keymap.set("n", "<leader>sr", function() require("telescope.builtin").resume() end, { desc = "[S]earch [R]esume" })
+vim.keymap.set(
+  "n",
+  "<leader><leader><leader>",
+  function() require("telescope.builtin").buffers() end,
+  { desc = "[ ] Find existing buffers" }
+)
+vim.keymap.set(
+  "n",
+  "<leader>s/",
+  function()
+    require("telescope.builtin").live_grep({
+      grep_open_files = true,
+      prompt_title = "Live Grep in Open Files",
+    })
+  end,
+  { desc = "[S]earch [/] in Open Files" }
+)
 
 -- Git (vim-fugitive)
 vim.keymap.set("n", "<leader>gs", ":Git<CR>")
@@ -85,9 +95,7 @@ vim.keymap.set("n", "<leader>hs", ":split<CR>")
 -- their plugin specs: lua/plugins/editor.lua (conform) and lua/plugins/debug.lua (dap).
 
 -- Toggle colorscheme light/dark
-vim.keymap.set("n", "<leader><leader>cs", function()
-  ChangeTheme()
-end)
+vim.keymap.set("n", "<leader><leader>cs", function() ChangeTheme() end)
 
 -- Terminal mode
 vim.keymap.set("t", "<C-w>n", "<C-\\><C-n>", { desc = "Exit terminal mode" })

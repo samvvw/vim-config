@@ -3,13 +3,21 @@ return {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
     lazy = false,
-    build = function()
-      require("nvim-treesitter").update()
-    end,
+    build = function() require("nvim-treesitter").update() end,
     config = function()
       require("nvim-treesitter").install({
-        "vimdoc", "javascript", "typescript", "c", "lua", "rust",
-        "jsdoc", "bash", "ruby", "elixir", "markdown", "markdown_inline",
+        "vimdoc",
+        "javascript",
+        "typescript",
+        "c",
+        "lua",
+        "rust",
+        "jsdoc",
+        "bash",
+        "ruby",
+        "elixir",
+        "markdown",
+        "markdown_inline",
       })
 
       -- Enable treesitter highlighting for any buffer whose parser is available.
