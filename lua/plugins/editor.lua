@@ -1,13 +1,39 @@
 return {
-  -- Surround / auto-close pairs
+  -- Surround
   { "tpope/vim-surround", event = "VeryLazy" },
-  { "jiangmiao/auto-pairs", event = "InsertEnter" },
+
+  -- Auto-close pairs (treesitter-aware, integrates with nvim-cmp)
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup({})
+      local ok, cmp = pcall(require, "cmp")
+      if ok then
+        cmp.event:on(
+          "confirm_done",
+          require("nvim-autopairs.completion.cmp").on_confirm_done()
+        )
+      end
+    end,
+  },
 
   -- Indentation guides
-  { "yggdroot/indentline", event = { "BufReadPost", "BufNewFile" } },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = { "BufReadPost", "BufNewFile" },
+    opts = {},
+  },
 
-  -- Inline CSS color previews
-  { "ap/vim-css-color", ft = { "css", "scss", "html", "javascript", "typescript" } },
+  -- Inline color previews (#rrggbb, rgb(), etc.)
+  {
+    "catgoose/nvim-colorizer.lua",
+    event = { "BufReadPost", "BufNewFile" },
+    config = function()
+      require("colorizer").setup()
+    end,
+  },
 
   -- Undo history visualizer
   { "mbbill/undotree", cmd = "UndotreeToggle" },
