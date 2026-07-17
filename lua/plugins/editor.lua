@@ -10,10 +10,7 @@ return {
       require("nvim-autopairs").setup({})
       local ok, cmp = pcall(require, "cmp")
       if ok then
-        cmp.event:on(
-          "confirm_done",
-          require("nvim-autopairs.completion.cmp").on_confirm_done()
-        )
+        cmp.event:on("confirm_done", require("nvim-autopairs.completion.cmp").on_confirm_done())
       end
     end,
   },
@@ -30,9 +27,7 @@ return {
   {
     "catgoose/nvim-colorizer.lua",
     event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      require("colorizer").setup()
-    end,
+    config = function() require("colorizer").setup() end,
   },
 
   -- Undo history visualizer

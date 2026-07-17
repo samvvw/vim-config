@@ -16,9 +16,7 @@ return {
 
       cmp.setup({
         snippet = {
-          expand = function(args)
-            require("luasnip").lsp_expand(args.body)
-          end,
+          expand = function(args) require("luasnip").lsp_expand(args.body) end,
         },
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
@@ -104,9 +102,7 @@ return {
       -- Buffer-local LSP keymaps
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(ev)
-          local map = function(mode, lhs, rhs)
-            vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf })
-          end
+          local map = function(mode, lhs, rhs) vim.keymap.set(mode, lhs, rhs, { buffer = ev.buf }) end
           map("n", "K", vim.lsp.buf.hover)
           map("n", "gd", vim.lsp.buf.definition)
           map("n", "gD", vim.lsp.buf.declaration)
@@ -117,9 +113,7 @@ return {
           map("n", "gl", vim.diagnostic.open_float)
           map("n", "<F2>", vim.lsp.buf.rename)
           map("n", "<F4>", vim.lsp.buf.code_action)
-          map({ "n", "x" }, "<F3>", function()
-            vim.lsp.buf.format({ async = true })
-          end)
+          map({ "n", "x" }, "<F3>", function() vim.lsp.buf.format({ async = true }) end)
         end,
       })
     end,
