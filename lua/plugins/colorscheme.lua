@@ -3,11 +3,9 @@
 function ChangeTheme()
   if vim.o.background == "dark" then
     vim.o.background = "light"
-    vim.g.airline_theme = "solarized"
     vim.cmd.colorscheme("rose-pine-dawn")
   else
     vim.o.background = "dark"
-    vim.g.airline_theme = "simple"
     vim.cmd.colorscheme("rose-pine-main")
   end
 end
