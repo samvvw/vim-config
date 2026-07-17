@@ -6,13 +6,15 @@ first run — no manual plugin-manager setup required.
 
 ## Requirements
 
-- Neovim **0.10+**
+- Neovim **0.11+** (uses the native `vim.lsp.config` API)
 - `git`
+- A C compiler and the [`tree-sitter` CLI](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md)
+  on your `PATH` — nvim-treesitter's `main` branch compiles parsers from source
+  (`npm install -g tree-sitter-cli`, or `cargo install tree-sitter-cli`)
 - A [Nerd Font](https://www.nerdfonts.com/) (for file icons / statusline glyphs)
 - Optional, for specific features:
   - `node` + `npm` — Prettier, Copilot, many LSP servers
   - `python3` — vimspector debug adapters
-  - A C compiler — treesitter parser builds
 
 ## Install
 
@@ -55,7 +57,12 @@ Leader is `<Space>`.
 | `<leader><leader>cs` | Toggle light/dark colorscheme |
 | `jj` (insert)      | Escape                          |
 
-LSP, completion, and vimspector debug mappings follow lsp-zero / vimspector defaults.
+LSP mappings (buffer-local, active once a server attaches): `K` hover, `gd`
+definition, `gD` declaration, `gi` implementation, `go` type definition, `gr`
+references, `gs` signature help, `gl` line diagnostics, `<F2>` rename, `<F3>`
+format, `<F4>` code action. Completion (nvim-cmp): `<C-Space>` trigger, `<CR>`
+confirm, `<C-e>` abort, `<C-b>`/`<C-f>` scroll docs. Debug mappings follow
+vimspector defaults.
 
 ## LSP servers
 
@@ -77,5 +84,10 @@ Servers are installed on demand through [Mason](https://github.com/williamboman/
 
 - `lazy-lock.json` is committed so plugin versions stay reproducible across machines.
   Run `:Lazy update` to bump them.
-- nvim-treesitter is pinned to the `master` branch (classic config API). The `main`
-  branch is a rewrite with a different API and is not used here.
+- The LSP layer uses Neovim's native `vim.lsp.config` / `vim.lsp.enable`, with
+  [mason](https://github.com/williamboman/mason.nvim) +
+  [mason-lspconfig](https://github.com/williamboman/mason-lspconfig.nvim) for
+  installing servers and [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+  for their default configs.
+- nvim-treesitter tracks the `main` branch. Manage parsers with `:TSInstall`,
+  and run `:checkhealth nvim-treesitter` if highlighting looks off.
