@@ -42,7 +42,8 @@ lua/plugins/             -- one spec file per concern (lsp, telescope, git, …)
 
 ## Key bindings
 
-Leader is `<Space>`.
+Leader is `<Space>`. Press it and pause to see available mappings via
+[which-key](https://github.com/folke/which-key.nvim).
 
 | Mapping            | Action                          |
 | ------------------ | ------------------------------- |
