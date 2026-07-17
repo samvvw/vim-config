@@ -110,6 +110,8 @@ return {
           map("n", "go", vim.lsp.buf.type_definition)
           map("n", "gr", vim.lsp.buf.references)
           map("n", "gs", vim.lsp.buf.signature_help)
+          map("n", "gci", vim.lsp.buf.incoming_calls)
+          map("n", "gco", vim.lsp.buf.outgoing_calls)
           map("n", "gl", vim.diagnostic.open_float)
           map("n", "<F2>", vim.lsp.buf.rename)
           map("n", "<F4>", vim.lsp.buf.code_action)
