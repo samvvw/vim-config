@@ -13,8 +13,9 @@ first run — no manual plugin-manager setup required.
   (`npm install -g tree-sitter-cli`, or `cargo install tree-sitter-cli`)
 - A [Nerd Font](https://www.nerdfonts.com/) (for file icons / statusline glyphs)
 - Optional, for specific features:
-  - `node` + `npm` — Prettier, Copilot, many LSP servers
-  - `python3` — vimspector debug adapters
+  - `node` + `npm` — prettier, many LSP servers
+  - Formatters/debug adapters (`stylua`, `prettier`, `codelldb`, …) are installed
+    on demand via [Mason](https://github.com/williamboman/mason.nvim) (`:Mason`)
 
 ## Install
 
@@ -51,7 +52,7 @@ Leader is `<Space>`.
 | `<leader>ps`       | Grep for a prompt               |
 | `<leader>gs`       | Git status (fugitive)           |
 | `<leader>==`       | Toggle undotree                 |
-| `<leader>p`        | Prettier                        |
+| `<leader>p`        | Format buffer/selection (conform) |
 | `<leader>vs` / `hs`| Vertical / horizontal split     |
 | `<leader>vt` / `ht`| Vertical / horizontal terminal  |
 | `<leader><leader>cs` | Toggle light/dark colorscheme |
@@ -61,8 +62,16 @@ LSP mappings (buffer-local, active once a server attaches): `K` hover, `gd`
 definition, `gD` declaration, `gi` implementation, `go` type definition, `gr`
 references, `gs` signature help, `gl` line diagnostics, `<F2>` rename, `<F3>`
 format, `<F4>` code action. Completion (nvim-cmp): `<C-Space>` trigger, `<CR>`
-confirm, `<C-e>` abort, `<C-b>`/`<C-f>` scroll docs. Debug mappings follow
-vimspector defaults.
+confirm, `<C-e>` abort, `<C-b>`/`<C-f>` scroll docs.
+
+Git hunks (gitsigns): `]h` / `[h` next/prev, `<leader>hp` preview, `<leader>hr`
+reset, `<leader>hb` blame line.
+
+Debugging (nvim-dap): `<leader>dr` continue/start, `<leader>ds` terminate,
+`<leader>dq` restart, `<leader>dc` run to cursor, `<leader>SO`/`SI`/`SQ` step
+over/into/out, `<leader>do` toggle breakpoint, `<leader>dO` conditional
+breakpoint, `<leader>dF` log point, `<leader>dp` evaluate under cursor,
+`<leader>du` toggle the debug UI.
 
 ## LSP servers
 
@@ -91,3 +100,9 @@ Servers are installed on demand through [Mason](https://github.com/williamboman/
   for their default configs.
 - nvim-treesitter tracks the `main` branch. Manage parsers with `:TSInstall`,
   and run `:checkhealth nvim-treesitter` if highlighting looks off.
+- Formatting is handled by [conform.nvim](https://github.com/stevearc/conform.nvim)
+  with format-on-save. Formatters (`stylua`, `prettier`) come from Mason; if one
+  isn't installed conform falls back to LSP formatting.
+- Debugging uses [nvim-dap](https://github.com/mfussenegger/nvim-dap) +
+  [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui); adapters (e.g. `codelldb`
+  for Rust/C/C++) are installed via Mason.
