@@ -1,1 +1,5 @@
-plugin/packer_compiled.lua
+# Neovim state that shouldn't be tracked
+*.swp
+tags
+
+# Keep lazy-lock.json tracked so plugin versions are reproducible across machines.
